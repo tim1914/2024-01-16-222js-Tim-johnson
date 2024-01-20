@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="getBands()">Get Bands</button>
+
+    <h1>Bands appear below</h1>
+
+    <div id="showBands"></div>
+
+    <script>
+        // function getBands() {
+        //     let xmlhttp = new XMLHttpRequest();
+        //     let url = "http://localhost:3000/bands";
+
+        //     xmlhttp.onreadystatechange = function () {
+        //         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        //             // let myArr = JSON.parse(xmlhttp.responseText);
+        //             let myArr = JSON.parse(xmlhttp.responseText, reviveBands);
+        //             populateBandsDiv(myArr);
+        //         }
+        //     };
+
+        //     xmlhttp.open("GET", url, true);
+        //     xmlhttp.send();
+        // }
+
+        function getBands() {
+
+            let url = "http://localhost:3000/bands";
+
+            // fetch(url)
+            //     .then(response => response.json())
+            //     .then(data => populateBandsDiv(data));
+
+            fetch(url)
+                .then(response => response.text())
+                .then(text => JSON.parse(text, reviveBands))
+                .then(data => populateBandsDiv(data));
+
+
+        }
+
+        function reviveBands(key, value) {
+            if (key === 'isTouring' && value === null) {
+                return "unknown"
+            }
+            else return value;
+        }
+
+        function populateBandsDiv(bandsArray) {
+            console.log(`bands`, bandsArray)
+            let out = "";
+            let i;
+            for (i = 0; i < bandsArray.length; i++) {
+                let currentBand = bandsArray[i];
+                out +=
+                    `${currentBand.name} was formed in ${currentBand.yearFormed} in ${currentBand.city} and touring boolean is ${currentBand.isTouring}<br /> 
+                `;
+            }
+            document.getElementById("showBands").innerHTML = out;
+        }
+    </script>
+</body>
+
+</html>

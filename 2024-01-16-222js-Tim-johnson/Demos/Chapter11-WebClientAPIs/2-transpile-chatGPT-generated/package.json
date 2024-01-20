@@ -1,0 +1,25 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "My project description",
+  "scripts": {
+    "build": "babel src --out-dir dist"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/cli": "^7.16.0",
+    "@babel/preset-env": "^7.16.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": ["last 2 versions"]
+          }
+        }
+      ]
+    ]
+  }
+}

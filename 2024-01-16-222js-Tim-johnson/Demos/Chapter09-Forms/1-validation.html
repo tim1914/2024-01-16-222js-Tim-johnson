@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form Validation</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+  <script>
+
+    function validate() {
+      let result = true;
+
+      document.getElementById("name_error").innerHTML = "";
+      if (document.validateform.name.value == "") {
+        document.getElementById("name_error").innerHTML = "Please enter your name";
+        document.validateform.name.focus();
+        result = false;
+      }
+
+      document.getElementById("zip_error").innerHTML = "";
+      if (document.validateform.zip.value == "" ||
+        isNaN(document.validateform.zip.value) ||
+        document.validateform.zip.value.length != 5) {
+        document.getElementById("zip_error").innerHTML = "Please enter your 5 digit zip code, YOU ENTERED:"+document.validateform.zip.value;
+        document.validateform.zip.value = "";
+        document.validateform.zip.focus();
+        result = false;
+      }
+      return result;
+    }
+
+    function chooseOption(element) {
+      document.radioform.cream.checked = false;
+      document.radioform.cream.disabled = element.value != "Scone";
+      document.radioform.dessert.style.visibility = element.value == "Other" ? "visible" : "hidden";
+    }
+
+    function showOrder() {
+      const order = document.radioform.order;
+      const starter = document.getElementById('starters');
+      let dessert = document.radioform.choose.value;
+      if (document.radioform.cream.checked) {
+        dessert += " with cream";
+      }
+      if (dessert == 'Other') {
+        dessert = document.radioform.dessert.value;
+      }
+      order.value = starter.options[starter.selectedIndex].innerHTML + "\n" + dessert;
+    }
+
+    window.onload = function () {
+      document.getElementById("form3").addEventListener("submit", function (event) {
+        alert("Stopping commit");
+        event.preventDefault();
+      });
+    }
+
+  </script>
+</head>
+
+<body>
+  <h2>Form Validation</h2>
+  <p>Form submission will be stopped and error messages displayed if validation fails.</p>
+  <form id="form1" action="done.html" name="validateform" onsubmit="return validate();">
+    Name: <input type="text" name="name" /><span id="name_error" class="error"></span><br />
+    Zip Code: <input type="text" name="zip" /><span id="zip_error" class="error"></span><br />
+    <input type="submit" name="submit" value="Enter" />
+  </form>
+
+  <h2>Reading Controls</h2>
+  <p>Select a starter and a dessert and hit Order to see it.</p>
+  <p>If other is selected a text area will be displayed where another item can be entered.</p>
+  <form id="form2" action="done.html" name="radioform" onsubmit="return validateOption();">
+    Starter:
+    <select style="margin-bottom:30px" id="starters" name="starters">
+      <option value="soup">Soup</option>
+      <option value="oysters">Oysters</option>
+      <option value="salmon">Smoked Salmon</option>
+    </select><br />
+    <input type="radio" name="choose" value="Cake" onclick="chooseOption(this);" checked />Cake<br />
+    <input type="radio" name="choose" value="Scone" onclick="chooseOption(this);" />Scone
+    <input type="checkbox" name="cream" value="Cream" disabled />Cream<br />
+    <input type="radio" name="choose" value="Other" onclick="chooseOption(this);" />Other
+    <input type="text" id="dessert" name="dessert" style="visibility:hidden" /><br />
+    <textarea style="margin-top:30px" name="order" rows="3" cols="20"></textarea><br />
+    <input type="button" onclick="showOrder();" value="Order" />
+  </form>
+
+  <h2>Stopping Form Submission</h2>
+  <p>Submitting the form will be stopped by displaying an alert and using preventDefault</p>
+  <form id="form3" action="done.html" name="form3">
+    <input type="submit" name="submit" value="Submit" />
+  </form>
+</body>
+
+</html>

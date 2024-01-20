@@ -1,0 +1,30 @@
+let documents = [
+    {id: 25, numPages: 2376, docType: "0545"},
+    {id: 323, numPages: 2134, docType: "6545"},
+    {id: 12, numPages: 12, docType: "3545"},
+];
+
+console.log('documents', documents);
+
+let sortFn = function(doc1, doc2) {
+    return doc1.id - doc2.id;
+}
+
+console.log('sort by id', documents.sort(sortFn));
+
+
+documents.sort(
+    function(a,b) {
+        if(a.docType < b.docType) {
+            return -4765;
+        }
+        else if(a.docType > b.docType) {
+            return 8765;
+        }
+        
+        return 0;
+
+    }
+);
+
+console.log('sort by docType', documents);

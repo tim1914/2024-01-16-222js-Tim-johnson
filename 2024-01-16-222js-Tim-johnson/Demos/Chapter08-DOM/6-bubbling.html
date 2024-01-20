@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Bubbling</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+                div { width: 80%; padding: 50px;width: 50%;}
+        
+                #outer {border: 2px solid blue;width: 400px;
+                        height: 250px;color: blue }
+
+                #inner {border: 2px solid red;height:150px; color: red}
+                #target {border: 2px solid green;height:50px; color: green}
+        </style>
+    </head>
+    <body>
+      Body
+         
+        <div id="outer">Outer Div
+            <div id="inner">Inner Div
+                <div id="target">
+                        Click this target
+                </div>
+            </div>
+        </div>
+
+        <button onclick="addClickEvents()">Add Click Event to div tags</button>
+        
+        <script>
+            function addClickEvents() {
+                   document.getElementById('outer').addEventListener("click", 
+                                      function() { alert( 'In outer') ;}, false); 
+                   document.getElementById('inner').addEventListener("click", 
+                                      function() { alert( 'In inner') ;}, false); 
+                   document.getElementById('target').addEventListener("click", 
+                                      function() { alert( 'In target') ;}, false); 
+            }
+        </script> 
+    </body>
+</html>

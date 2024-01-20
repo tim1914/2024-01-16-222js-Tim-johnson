@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="twoevents">
+        Click to fire off two events: append1 and append2
+    </button>
+    <input id="target" value=""/>
+    <script>
+        const element = document.getElementById("twoevents");
+        const target = document.getElementById("target");
+        element.addEventListener("click", function(){target.value += '1' })
+        element.addEventListener("click", function(){target.value += '2' })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSON.parse with reviver</title>
+</head>
+<body>
+
+<h2>JSON.parse with reviver</h2>
+
+<p id="demo">View Console</p>
+
+<script>
+	
+	
+	const data = '{"name": { "first":"John","last":"Herilla"},' +
+				'"email": "","phone": "555-1212"}';
+	const o1 = JSON.parse(data);
+	console.log(o1);
+	
+	
+	const o = JSON.parse(data, function(k, v) {
+    // if k === '', processing is done, time to add any extras...
+	  if (k === '') { v.timeStamp = new Date(); return v; } 
+	  console.log(k);
+	  if (v =='') {
+		  return "unknown";               
+	  }
+	  else return v ;
+		
+	}); 
+	console.log(o);
+	
+	
+</script>
+
+</body>
+</html>

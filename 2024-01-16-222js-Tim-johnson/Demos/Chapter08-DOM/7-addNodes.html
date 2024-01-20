@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    
+    <script>
+       
+        function addOrder() {
+            const order = document.getElementById('order');
+            const starter = document.getElementById('starters');
+            const item = document.createElement('li');
+            item.innerHTML = starter.options[starter.selectedIndex].innerHTML;
+            order.appendChild(item);
+        }
+
+        function remove() {
+            const order = document.getElementById('order');
+            order.innerHTML = '';
+        }
+  </script>
+</head>
+
+<body>
+   
+    <h2>Add and remove elements</h2>
+    <p>Select an item and hit Order to add to the order. Hot remove to remove all orders.</p>
+    <form name="orderForm">
+        <select id="starters" name="starters">
+            <option value="salad">Salad</option>
+            <option value="tea">Tea</option>
+            <option value="beets">Beets</option>
+        </select><br />
+        <input type="button" onclick="addOrder();" value="Order" />
+
+        <input type="button" onclick="remove();" value="Remove" />
+    </form>
+    <p>Your order</p>
+    <ul id="order">
+    </ul>
+
+
+ 
+</body>
+
+</html>

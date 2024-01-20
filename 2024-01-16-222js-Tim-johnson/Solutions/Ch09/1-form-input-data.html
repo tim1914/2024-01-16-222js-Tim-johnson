@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function capitalize() {
+            let usernameField = document.getElementById("username");
+            usernameField.value = usernameField.value.toUpperCase();
+        }
+    </script>
+</head>
+<body onload="setForm()">
+    
+    <form action="1-form-done.html" method="get">
+
+        <input type="text" name="username" id="username" oninput="capitalize()">
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+</body>
+</html>

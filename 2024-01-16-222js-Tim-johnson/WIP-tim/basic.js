@@ -1,0 +1,1 @@
+console.log("Hello and Welacom to a basic JavaScript program");

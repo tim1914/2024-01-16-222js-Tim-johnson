@@ -1,0 +1,23 @@
+{
+    "env": {
+        "browser": true,
+        "node":true
+        
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 2015
+    },
+    "rules": {
+        "indent": 0,
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": 0,
+        "semi": [
+            "warn",
+            "always"
+        ]
+    }
+}

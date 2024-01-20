@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>This page was loaded at <span id="datetimestamp"></span></p>
+
+    <script>
+        document.getElementById("datetimestamp").innerText = new Date();
+    </script>
+
+    <p id="current" >The current time is: <span id="currentTime"></span></p>
+    <button onclick="startClock()">Start Clock</button>
+    <button id="stopClock" onclick="stopClock()">Stop Clock</button>
+    <script>
+        let intervalID;
+        function startClock() {
+            intervalID = setInterval (()=> {document.getElementById("currentTime").innerText = new Date();}, 1000)
+        }
+        function stopClock() {
+            clearInterval(intervalID);
+            document.getElementById("current").innerText="You stopped the clock"
+        }
+        
+    </script>
+
+</body>
+</html>
+

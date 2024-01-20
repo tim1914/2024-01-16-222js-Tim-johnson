@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        .setSize {
+            font-size: 15pt;
+        }
+
+        .setColour {
+            color: green;
+        }
+
+        #colorMe {
+            color: red;
+        }
+    </style>
+    <script>
+        function process(element, event) {
+            element.value = 'Event ' + event.type;
+        }
+
+        function processText(event) {
+            document.eventForm.activity.value = 'Key ' + event.keyCode + " " + event.key;
+        }
+       
+    </script>
+</head>
+
+<body>
+    <form id="eventForm" name="eventForm">
+        
+        Text: <input type="text" name="keyboard" onkeydown="processText(event)" />
+        <br />
+        <p>You last pressed:
+        <textarea id="activity"></textarea></p>
+    </form>
+
+   
+</body>
+
+</html>

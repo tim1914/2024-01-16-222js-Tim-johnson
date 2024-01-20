@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSS Inclusion Methods</title>
+    <!-- 1. Embed in <head> -->
+    <style> 
+        body { font-family: Arial, sans-serif; }
+    </style>
+
+    <!-- 2a. External Using the <link> tag -->
+    <link rel="stylesheet" href="path-to-stylesheet.css">
+    <!-- 2b. External Using @import within a style -->
+    <style>
+        @import url('path-to-another-stylesheet.css');
+    </style>
+</head>
+<body>
+    <!-- 3. Inline -->
+    <div style="color: red;">This text is inline styled.</div>
+</body>
+</html>

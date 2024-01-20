@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+        .setSize {
+            font-size: 15pt;
+        }
+
+        .setColor {
+            color: green;
+        }
+
+        #colorMe {
+            color: red;
+        }
+    </style>
+    <script>
+        function process(element, event) {
+            element.value = 'Event ' + event.type;
+        }
+
+        function processText(event) {
+            document.eventForm.activity.value = 'Key ' + event.keyCode + " " + event.key;
+        }
+
+        function addOrder() {
+            const order = document.getElementById('order');
+            const starter = document.getElementById('starters');
+            const item = document.createElement('li');
+            item.innerHTML = starter.options[starter.selectedIndex].innerHTML;
+            order.appendChild(item);
+        }
+
+        function remove() {
+            const order = document.getElementById('order');
+            order.innerHTML = '';
+        }
+
+        function colorMe() {
+            document.getElementById('colorMe').style.color = document.changecss.color.value;
+        }
+
+        function changeClass() {
+            const element = document.getElementById('styleme');
+            const action = document.changeclass.color.value;
+            if (action == "Set") {
+                element.className = "setSize"
+            } else if (action == "Add") {
+                element.className += " setColor";
+            } else {
+                element.className = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Events</h2>
+    <p>Move the mouse in and out of the Event box and click in the box to see events.<br />
+        Focus on the text box and type keys to see key events in the Event box.</p>
+    <form id="eventForm" name="eventForm">
+        Event: 
+        <input type="text" name="activity" 
+            onclick="process(this,event)" 
+            onmouseover="process(this,event)"
+            onmouseout="process(this,event)" /><br />
+        Text: <input type="text" name="keyboard" onkeydown="processText(event)" />
+    </form>
+
+    <h2>Add and remove elements</h2>
+    <p>Select an item and hit Order to add to the order. Hot remove to remove all orders.</p>
+    <form name="orderForm">
+        <select id="starters" name="starters">
+            <option value="soup">Soup</option>
+            <option value="oysters">Oysters</option>
+            <option value="salmon">Smoked Salmon</option>
+        </select><br />
+        <input type="button" onclick="addOrder();" value="Order" />
+
+        <input type="button" onclick="remove();" value="Remove" />
+    </form>
+    <p>Your order</p>
+    <ul id="order">
+    </ul>
+
+    <h2>Changing style color</h2>
+    <p>Select a color and hit the color button to apply</p>
+    <form name="changecss">
+        <input type="radio" name="color" value="red" checked />Red<br />
+        <input type="radio" name="color" value="green" />Green<br />
+        <input type="radio" name="color" value="blue" />Blue<br />
+        <input type="button" onclick="colorMe();" value="Color" />
+    </form>
+    <p id="colorMe">This is colorful text</p>
+
+    <h2>Changing CSS class</h2>
+
+    <p>Select an option and hit the style button to apply</p>
+    <form name="changeclass">
+        <input type="radio" name="color" value="Set" checked />Set text size<br />
+        <input type="radio" name="color" value="Add" />Add color<br />
+        <input type="radio" name="color" value="Clear" />Clear styles<br />
+        <input type="button" onclick="changeClass();" value="Style" />
+    </form>
+    <p id="styleme">This is styled text</p>
+</body>
+
+</html>

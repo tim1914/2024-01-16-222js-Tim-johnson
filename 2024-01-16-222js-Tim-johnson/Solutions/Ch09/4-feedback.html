@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script>
+      function checkNumber(event) {
+         let value = document.getElementById("enteredNumber").value;
+         if (value > 10) {
+            // alert("You entered a value greater than 10 not submitting")
+          
+            document.getElementById("errorNumber").style.display = "inline";
+        
+          
+            event.preventDefault();
+            return false;
+         }
+      }
+   </script>
+
+   <style>
+       #errorNumber {
+           color: red;
+           display: none;
+       }
+   </style>
+</head>
+<body>
+   <form action="1-form-done.html" method="get" 
+         onsubmit="return checkNumber(event)">
+
+      <label for="enteredNumber">Type a number between 1 and 10</label>
+
+      <input type="number" name="range" id="enteredNumber">
+        <br />
+      <span id="errorNumber">Please enter a valid number</span>
+
+      <br/>
+      <button type="submit">Submit</button>
+
+   </form>
+</body>
+</html>

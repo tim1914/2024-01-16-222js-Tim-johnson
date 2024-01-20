@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script>
+        function getRandomInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+    </script>
+
+    <script>
+        function addNumber() {
+            const ul = document.getElementById("numbers");
+            let newLi = document.createElement('li');
+            newLi.innerText = getRandomInteger(1,100);
+            ul.appendChild(newLi);
+       }
+
+    </script>
+</head>
+
+<body>
+    <p>Let's add random numbers</p>
+    <button onclick="addNumber()">Add Number</button>
+    <ul id="numbers">
+    </ul>
+</body>
+
+</html>
