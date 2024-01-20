@@ -1,0 +1,1 @@
+console.log("Hello and Welcome to a basic JavaScript program")
